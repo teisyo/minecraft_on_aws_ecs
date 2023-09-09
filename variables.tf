@@ -24,9 +24,9 @@ variable "aws-ecs-container-java-memory-heap" {
 }
 variable "aws-region" {
   type    = string
-  default = "ap-northeast-1"
+  default = "us-east-1"
 }
 variable "aws-availability-zone" {
   type    = string
-  default = "ap-northeast-1a"
+  default = "us-east-1c"
 }
