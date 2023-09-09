@@ -47,7 +47,7 @@ resource "aws_ecs_task_definition" "minecraft-on-ecs-task" {
           },
         ]
         essential = true
-        image     = "itzg/minecraft-server:java16"
+        image     = "itzg/docker-minecraft-bedrock-server:1.14"
         logConfiguration = {
           logDriver = "awslogs"
           options = {
@@ -67,8 +67,8 @@ resource "aws_ecs_task_definition" "minecraft-on-ecs-task" {
         name = "minecraft"
         portMappings = [
           {
-            containerPort = 25565
-            hostPort      = 25565
+            containerPort = 19132
+            hostPort      = 19132
             protocol      = "tcp"
           },
         ]
@@ -106,7 +106,7 @@ resource "aws_ecs_service" "minecraft-on-ecs-service" {
 
   load_balancer {
     container_name   = "minecraft"
-    container_port   = 25565
+    container_port   = 19132
     target_group_arn = aws_lb_target_group.minecraft-ecs-target.arn
   }
 
